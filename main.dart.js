@@ -65802,20 +65802,20 @@ for(r=s,p="";r>=0;--r){o=""+(r+1)
 p="v_SubSourceName"+o+" = v_DimSourceName"+o+"|'_'|v_ViewSourceName;\n"+p}for(r=s,n="";r>=0;--r){o=""+(r+1)
 n="IF(SUBSETEXISTS(v_DimSourceName"+o+b+o+")=1);\nSUBSETDESTROY(v_DimSourceName"+o+b+o+"); \nENDIF;\n"+n}for(r=s,m="";r>=0;--r){o=b2[r]
 if(o==="Scenario"){o=""+(r+1)
-l=a+o+a0+o+a1+o+a0+o+", p_Scenario, 1 );\n"}else{k=""+(r+1)
-l=o==="Version"?a+k+a0+k+a1+k+a0+k+", p_Version, 1 );\n":"MDX"+k+"= '{TM1FILTERBYLEVEL({TM1SUBSETALL(['|v_DimSourceName"+k+"|'])},0)}';\nSUBSETCREATEBYMDX (v_SubSourceName"+k+", MDX"+k+", 0);\n"}m=l+m}for(j="";s>=0;--s){o=""+(s+1)
+l=a+o+a0+o+a1+o+a0+o+", p_Scenario, 1 );\n\n"}else{k=""+(r+1)
+l=o==="Version"?a+k+a0+k+a1+k+a0+k+", p_Version, 1 );\n\n":"MDX"+k+"= '{TM1FILTERBYLEVEL({TM1SUBSETALL(['|v_DimSourceName"+k+"|'])},0)}';\nSUBSETCREATEBYMDX (v_SubSourceName"+k+", MDX"+k+", 0);\n\n"}m=l+m}for(j="";s>=0;--s){o=""+(s+1)
 j="VIEWSUBSETASSIGN (v_CubeSourceName, v_ViewSourceName, v_DimSourceName"+o+a0+o+");\n"+j}o=this.b
 for(s=b1-1,r=s,i="";r>=0;--r)i="v_Dim"+(r+1)+"Name = '"+b3[r]+"';\n"+i
 for(r=s,h="";r>=0;--r){k=""+(r+1)
 h="v_Subs"+k+"Name = v_Dim"+k+"Name|'_'|v_ViewName;\n"+h}for(r=s,g="";r>=0;--r){k=""+(r+1)
 g="IF(SUBSETEXISTS(v_Dim"+k+"Name,v_Subs"+k+"Name)=1);\nSUBSETDESTROY(v_Dim"+k+"Name,v_Subs"+k+"Name);\nENDIF;\n"+g}for(k=a6==o,r=s,f="";r>=0;--r)if(k){e=b3[r]
 if(e==="Scenario"){e=""+(r+1)
-f=a2+e+"Name, v_Subs"+e+a3+e+"Name, v_Subs"+e+"Name, p_TScenario, 1 );\n"+f}else{d=""+(r+1)
-f=e==="Version"?a2+d+"Name, v_Subs"+d+a3+d+"Name, v_Subs"+d+"Name, p_TVersion, 1 );\n"+f:"MDX"+d+a4+d+a5+d+"Name, MDX"+d+", 0);\n"+f}}else{e=b3[r]
+f=a2+e+"Name, v_Subs"+e+a3+e+"Name, v_Subs"+e+"Name, p_TScenario, 1 );\n\n"+f}else{d=""+(r+1)
+f=e==="Version"?a2+d+"Name, v_Subs"+d+a3+d+"Name, v_Subs"+d+"Name, p_TVersion, 1 );\n\n"+f:"MDX"+d+a4+d+a5+d+"Name, MDX"+d+", 0);\n\n"+f}}else{e=b3[r]
 if(e==="Scenario"){e=""+(r+1)
-f=a2+e+"Name, v_Subs"+e+a3+e+"Name, v_Subs"+e+"Name, p_Scenario, 1 );\n"+f}else{d=""+(r+1)
-f=e==="Version"?a2+d+"Name, v_Subs"+d+a3+d+"Name, v_Subs"+d+"Name, p_Version, 1 );\n"+f:"MDX"+d+a4+d+a5+d+"Name, MDX"+d+", 0);\n"+f}}for(c="";s>=0;--s){k=""+(s+1)
-c="VIEWSUBSETASSIGN (v_CubeName, v_ViewName, v_Dim"+k+"Name, v_Subs"+k+"Name);\n"+c}return"#******* Source Cube ***********************************\n\nvProcessName = GetProcessName;\n\nv_CubeSourceName = '"+A.h(a6)+"';\nv_ViewSourceName = 'Source'|'_'|v_CubeSourceName|'_'|vProcessName;\n\n"+q+"\n"+p+"\nIF(VIEWEXISTS (v_CubeSourceName, v_ViewSourceName)=1);\nVIEWDESTROY(v_CubeSourceName,v_ViewSourceName);\nENDIF; \n\n"+n+"\n"+("VIEWCREATE(v_CubeSourceName,v_ViewSourceName);\n\nViewExtractSkipCalcsSet (v_CubeSourceName, v_ViewSourceName, "+a7+" );\nViewExtractSkipRuleValuesSet (v_CubeSourceName, v_ViewSourceName, "+a8+");\nViewExtractSkipZeroesSet (v_CubeSourceName, v_ViewSourceName, "+a9+"); ")+"\n\n"+m+"\n"+j+"\n#Data source assignment\nDataSourceType='View';\nDataSourceNameForServer=v_CubeSourceName;\nDatasourceCubeview=v_ViewSourceName;\n\n"+("#******* Target Cube ***********************************\n\nv_CubeName = '"+A.h(o)+"';\nv_ViewName='VZO'|'_'|v_CubeName|'_'|vProcessName;\n")+"\n"+i+"\n"+h+"\nIF(VIEWEXISTS (v_CubeName, v_ViewName)=1);\nVIEWDESTROY(v_CubeName,v_ViewName);\nENDIF;\n\n"+g+"\nVIEWCREATE(v_CubeName,v_ViewName);\n\n"+f+"\n"+c+"\nViewZeroOut( v_CubeName, v_ViewName );"},
+f=a2+e+"Name, v_Subs"+e+a3+e+"Name, v_Subs"+e+"Name, p_Scenario, 1 );\n\n"+f}else{d=""+(r+1)
+f=e==="Version"?a2+d+"Name, v_Subs"+d+a3+d+"Name, v_Subs"+d+"Name, p_Version, 1 );\n\n"+f:"MDX"+d+a4+d+a5+d+"Name, MDX"+d+", 0);\n\n"+f}}for(c="";s>=0;--s){k=""+(s+1)
+c="VIEWSUBSETASSIGN (v_CubeName, v_ViewName, v_Dim"+k+"Name, v_Subs"+k+"Name);\n"+c}return"#******* Source Cube ***********************************\n\nvProcessName = GetProcessName;\n\nv_CubeSourceName = '"+A.h(a6)+"';\nv_ViewSourceName = 'Source'|'_'|v_CubeSourceName|'_'|vProcessName;\n\n"+q+"\n"+p+"\nIF(VIEWEXISTS (v_CubeSourceName, v_ViewSourceName)=1);\nVIEWDESTROY(v_CubeSourceName,v_ViewSourceName);\nENDIF; \n\n"+n+"\n"+("VIEWCREATE(v_CubeSourceName,v_ViewSourceName);\n\nViewExtractSkipCalcsSet (v_CubeSourceName, v_ViewSourceName, "+a7+" );\nViewExtractSkipRuleValuesSet (v_CubeSourceName, v_ViewSourceName, "+a8+");\nViewExtractSkipZeroesSet (v_CubeSourceName, v_ViewSourceName, "+a9+"); ")+"\n\n"+m+j+"\n#Data source assignment\nDataSourceType='View';\nDataSourceNameForServer=v_CubeSourceName;\nDatasourceCubeview=v_ViewSourceName;\n\n"+("#******* Target Cube ***********************************\n\nv_CubeName = '"+A.h(o)+"';\nv_ViewName='VZO'|'_'|v_CubeName|'_'|vProcessName;\n")+"\n"+i+"\n"+h+"\nIF(VIEWEXISTS (v_CubeName, v_ViewName)=1);\nVIEWDESTROY(v_CubeName,v_ViewName);\nENDIF;\n\n"+g+"\nVIEWCREATE(v_CubeName,v_ViewName);\n\n"+f+c+"\nViewZeroOut( v_CubeName, v_ViewName );"},
 a3f(a,b){var s,r,q,p,o=",v_SubSourceName"
 for(s=a,r="";s>0;--s){q=""+s
 r="IF(SUBSETEXISTS(v_DimSourceName"+q+o+q+")=1);\nSUBSETDESTROY(v_DimSourceName"+q+o+q+"); \nENDIF;\n"+r}for(s=b,p="";s>0;--s){q=""+s
@@ -65839,7 +65839,7 @@ return A.Vi(new A.a8v(this),s,t.mq)},
 ap(){this.aQ()
 this.d=new A.RK().t1()},
 M(a){var s=this,r=null,q=t.F
-return new A.we(A.ez(r,new A.H8(A.a07(A.a([A.UB(A.me(A.a([B.MM,B.kI,s.a3P(),s.a3Q()],q),B.aO)),A.UB(s.a1n()),A.UB(A.me(A.a([B.MH,B.kI,s.a3R(),s.a3S()],q),B.aO))],q),B.fr,B.FR,B.aO),r),r,r,r,r,r,B.Bs,r),r)},
+return new A.we(A.ez(r,new A.H8(A.a07(A.a([A.UB(A.me(A.a([B.MM,B.kI,s.a3P(),s.a3Q()],q),B.aO)),A.UB(s.a1n()),A.UB(A.me(A.a([B.MG,B.kI,s.a3R(),s.a3S()],q),B.aO))],q),B.fr,B.FR,B.aO),r),r,r,r,r,r,B.Bs,r),r)},
 a1n(){var s,r,q,p,o,n=this,m=null,l=n.r
 l=A.adM(B.hq,!1,B.j,new A.a8f(n),l,B.MK,l)
 s=n.w
@@ -65848,7 +65848,7 @@ r=n.x
 q=t.F
 p=t.Il
 o=t.xx
-return A.me(A.a([A.ez(m,A.me(A.a([l,s,A.adM(B.hq,!1,B.j,new A.a8h(n),r,B.MG,r)],q),B.aO),B.lK,m,m,m,m,m,m),B.eN,A.iw(A.tZ(B.ML,new A.a8i(n),A.ta(m,m,new A.bX(B.n,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),50,200),B.kI,A.iw(A.tZ(B.MD,new A.a8j(n),A.ta(m,m,new A.bX(B.lV,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),30,100),B.eN,A.iw(A.aj4(n.ax,A.ae7(m,m,m,m,m,m,m,m,!0,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,"Prolog",m,m,m,m,!1,m,m,m,m,m,m,m,m,m,m,m,A.tZ(B.MF,new A.a8k(n),A.ta(m,m,new A.bX(B.fn,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),m,m,m,m,m),m,B.vY),500,1000),B.B9,A.iw(A.aj4(n.ay,A.ae7(m,m,m,m,m,m,m,m,!0,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,"Epilog",m,m,m,m,!1,m,m,m,m,m,m,m,m,m,m,m,A.tZ(B.MJ,new A.a8l(n),A.ta(m,m,new A.bX(B.dN,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),m,m,m,m,m),m,B.vY),500,1000)],q),B.aO)}}
+return A.me(A.a([A.ez(m,A.me(A.a([l,s,A.adM(B.hq,!1,B.j,new A.a8h(n),r,B.MF,r)],q),B.aO),B.lK,m,m,m,m,m,m),B.eN,A.iw(A.tZ(B.ML,new A.a8i(n),A.ta(m,m,new A.bX(B.n,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),50,200),B.kI,A.iw(A.tZ(B.MD,new A.a8j(n),A.ta(m,m,new A.bX(B.lV,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),30,100),B.eN,A.iw(A.aj4(n.ax,A.ae7(m,m,m,m,m,m,m,m,!0,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,"Prolog",m,m,m,m,!1,m,m,m,m,m,m,m,m,m,m,m,A.tZ(B.ME,new A.a8k(n),A.ta(m,m,new A.bX(B.fn,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),m,m,m,m,m),m,B.vY),500,1000),B.B9,A.iw(A.aj4(n.ay,A.ae7(m,m,m,m,m,m,m,m,!0,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,"Epilog",m,m,m,m,!1,m,m,m,m,m,m,m,m,m,m,m,A.tZ(B.MI,new A.a8l(n),A.ta(m,m,new A.bX(B.dN,p),m,m,m,m,m,m,m,m,m,m,new A.bX(B.bZ,o),m,m,m,m,m,m)),m,m,m,m,m),m,B.vY),500,1000)],q),B.aO)}}
 A.a8r.prototype={
 $2(a,b){var s,r,q,p,o,n,m=null,l=b.b
 if(l!=null){s=this.a
@@ -65903,7 +65903,7 @@ A.a8v.prototype={
 $2(a,b){var s,r,q=null,p=b.b
 if(p!=null){s=this.a
 r=s.as
-return A.ahc(B.MI,J.kg(p,new A.a8t(),t.b7).dw(0),new A.a8u(s),r,t.N)}else{p=b.c
+return A.ahc(B.MH,J.kg(p,new A.a8t(),t.b7).dw(0),new A.a8u(s),r,t.N)}else{p=b.c
 if(p!=null)return A.lv(A.h(p),q,q,q,q,q,q)}return B.dG},
 $S:154}
 A.a8u.prototype={
@@ -65950,10 +65950,10 @@ s.ad(new A.a8b(s))},
 $S:0}
 A.a8b.prototype={
 $0(){var s=null,r=this.a,q=r.Q
-if(q!=null){r.ax.sbM(0,new A.Ci(q,r.as).a6z(r.y,r.z,r.e,r.f,r.r,r.w,r.x))
+if(q!=null&&r.as!=null){r.ax.sbM(0,new A.Ci(q,r.as).a6z(r.y,r.z,r.e,r.f,r.r,r.w,r.x))
 r.ay.sbM(0,new A.Ci(r.Q,r.as).a3f(r.y,r.z))}else{r=r.c.T(t.Pu)
 r.toString
-r.f.v_(A.a3m(s,s,B.dN,s,B.T,B.ME,B.dQ,B.fB,s,s,s,s,s,s,s))}},
+r.f.v_(A.a3m(s,s,B.dN,s,B.T,B.MJ,B.dQ,B.fB,s,s,s,s,s,s,s))}},
 $S:0}
 A.a8j.prototype={
 $0(){var s=this.a
@@ -70604,10 +70604,8 @@ B.w0=new A.x6(1,"longestLine")
 B.MB=new A.dH("Source Cube",null,null,null,null,null,null,null,null)
 B.MC=new A.dH("Skip Rule Values",null,null,null,null,null,null,null,null)
 B.MD=new A.dH("Clear",null,null,null,null,null,null,null,null)
-B.vZ=new A.q(!0,B.j,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.ME=new A.dH("Please Select Cube!",null,B.vZ,null,null,null,null,null,null)
-B.MF=new A.dH("Copy Prolog",null,null,null,null,null,null,null,null)
-B.MG=new A.dH("Skip Zero/Blank Values",null,null,null,null,null,null,null,null)
+B.ME=new A.dH("Copy Prolog",null,null,null,null,null,null,null,null)
+B.MF=new A.dH("Skip Zero/Blank Values",null,null,null,null,null,null,null,null)
 B.AF=new A.I(4294962158)
 B.AD=new A.I(4294954450)
 B.Av=new A.I(4293892762)
@@ -70617,11 +70615,13 @@ B.As=new A.I(4293212469)
 B.FY=new A.bN([50,B.AF,100,B.AD,200,B.Av,300,B.At,400,B.lY,500,B.Aw,600,B.As,700,B.fq,800,B.lV,900,B.dN],t.pl)
 B.Gk=new A.pd(B.FY,4294198070)
 B.Lk=new A.q(!0,B.Gk,null,null,null,null,24,B.bq,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.MH=new A.dH("TARGET CUBE",null,B.Lk,null,null,null,null,null,null)
-B.MI=new A.dH("Target Cube",null,null,null,null,null,null,null,null)
-B.MJ=new A.dH("Copy Epilog",null,null,null,null,null,null,null,null)
+B.MG=new A.dH("TARGET CUBE",null,B.Lk,null,null,null,null,null,null)
+B.MH=new A.dH("Target Cube",null,null,null,null,null,null,null,null)
+B.MI=new A.dH("Copy Epilog",null,null,null,null,null,null,null,null)
 B.w1=new A.dH("",null,null,null,null,null,null,null,null)
+B.vZ=new A.q(!0,B.j,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.w2=new A.dH("Copied to Clipboard!",null,B.vZ,null,null,null,null,null,null)
+B.MJ=new A.dH("Please Select Source and Target Cube!",null,B.vZ,null,null,null,null,null,null)
 B.MK=new A.dH("Skip Consolidated Values",null,null,null,null,null,null,null,null)
 B.ML=new A.dH("Generate Process",null,null,null,null,null,null,null,null)
 B.Au=new A.I(4293457385)
